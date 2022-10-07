@@ -3,7 +3,7 @@ from twarc import Twarc2, expansions
 import json
 
 # This is where you initialize the client with your own bearer token (replace the XXXXX with your own bearer token)
-client = Twarc2(bearer_token="AAAAAAAAAAAAAAAAAAAAAMcdhwEAAAAAPtKQyJaEJzPuNPHbCgLP8QbECas%3DrUyDuqGoVxveXSRCB7OqteQNndqXG36z2ENrbpHGUepvp6wV3X")
+client = Twarc2(bearer_token="XXXXXX")
 
 def main(): 
     # List of user IDs to lookup, add the ones you would like to lookup
