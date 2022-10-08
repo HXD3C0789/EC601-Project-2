@@ -11,6 +11,12 @@ In this test, just one user ID was entered as input, however, the programs allow
 
 Part 2: Botomter
 The mission of this part is writing a test program for botometer. Botometer could help us identify whether the accounts are bot or real person. The testing program allow users enter the screen name or user ID of the account they want to check, several account can be entered at the same time. However, when running this program, there's a error message tells that I'm unauthorized for url of botometer. I tried to work on it for a while, but I'm a beginner in Python and not familiar to botometer and twitter library, so I wasn't able to solve the problem. I found expected results on Github provided by Botomer, which are shown in figure below. The result includes a botscore, the highest value of botscore is 1, when botscore is high, an account is more likely to be a bot, when the bot score is low, the account should be operated by a real people.
+
 <img width="446" alt="image" src="https://user-images.githubusercontent.com/77231716/194673060-138f9de1-5158-40f1-af04-8d0463c2a99e.png">
 
-Part 3:
+Part 3: Google NLP
+NLP means natural leaguage processing, it can analyze a piece of writing, and output the entities (whether a word is used saliently), sentiment (natural, positive, or negative language), syntax (relationship between words), caregories (the categories of topic). The rquirement of this part is writing a test program for sentiment analysis, but when the program was running, there is a credentials problem. I spent hours to lookup codes, set up the proejct, initialize the Google Cloud CLI, but the initialize process always give me warnings. Since the code doesn't work properly, but literally, the output should be a set of scores for sectences. The sentiment scores are set in a range, for example, -1 to 1. When score is low, the system think a sentence includes negative language, when scores are high, it's more likely to be positive language. The following figure is sentiment index provided by Google Cloud website.
+
+<img width="656" alt="image" src="https://user-images.githubusercontent.com/77231716/194678477-68bd3f83-58c2-4973-8598-c01fbe66d559.png">
+
+
