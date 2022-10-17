@@ -23,3 +23,7 @@ NLP means natural leaguage processing, it can analyze a piece of writing, and ou
 Phase 2 User Story
 
 Social media apps such as Facebook, Instagram, Twitter, and Snapchat are becoming essential in our lives to acquire information, read news, and learn about what's happening around us. Influencer is a powerful role to spread information and bring earnings to social media apps. Many social media operation companies would like to reward influencers who increase the liveness of the platform, and this reward will be based on the number of reads, posts, and followers. To operate the reward mechanism for influencers, social media companies need to have statistics on this information. The mission of this project is to develop a tool to collect the number of reads, posts, and followers of influenciers.
+
+Minimum Value Product: A tool to help Twitter collect data about influenciers' reads, posts, and followers.
+
+Product User: Data analyzers in Twitter company.
