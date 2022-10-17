@@ -1,0 +1,86 @@
+# This program in Python could help data analyzers in Twitter learn about the number of likes and followers of a influencier.
+# The first part could look up the number of followers of a Twitter user.
+
+pip3 install twarc
+
+from twarc import Twarc2, expansions
+import json
+
+# Replace your bearer token below
+client = Twarc2(bearer_token="XXXXX")
+
+
+def main():
+    # The followers function gets followers for specified user
+    followers = client.followers(user="twitterdev")
+    for page in followers:
+        result = expansions.flatten(page)
+        for user in result:
+            # Here we are printing the full Tweet object JSON to the console
+            print(json.dumps(user))
+
+
+if __name__ == "__main__":
+    main()
+
+# Sometimes a Twitter account may have a large group of followers, but this doesn't mean the tweets posted are all popular and attractive to the audience,
+# the following program helps to lookup the number of likes a influencier get for a particular Tweet by entering Tweet fields and Twitter id.
+
+import requests
+import os
+import json
+
+# To set your enviornment variables in your terminal run the following line:
+# export 'BEARER_TOKEN'='<your_bearer_token>'
+bearer_token = os.environ.get("BEARER_TOKEN")
+
+
+def create_url():
+    # Tweet fields are adjustable.
+    # Options include:
+    # attachments, author_id, context_annotations,
+    # conversation_id, created_at, entities, geo, id,
+    # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
+    # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
+    # source, text, and withheld
+    tweet_fields = "tweet.fields=lang,author_id"
+    # Be sure to replace your-user-id with your own user ID or one of an authenticating user
+    # You can find a user ID by using the user lookup endpoint
+    id = "your-user-id"
+    # You can adjust ids to include a single Tweets.
+    # Or you can add to up to 100 comma-separated IDs
+    url = "https://api.twitter.com/2/users/{}/liked_tweets".format(id)
+    return url, tweet_fields
+
+
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
+
+    r.headers["Authorization"] = f"Bearer {bearer_token}"
+    r.headers["User-Agent"] = "v2LikedTweetsPython"
+    return r
+
+
+def connect_to_endpoint(url, tweet_fields):
+    response = requests.request(
+        "GET", url, auth=bearer_oauth, params=tweet_fields)
+    print(response.status_code)
+    if response.status_code != 200:
+        raise Exception(
+            "Request returned an error: {} {}".format(
+                response.status_code, response.text
+            )
+        )
+    return response.json()
+
+
+def main():
+    url, tweet_fields = create_url()
+    json_response = connect_to_endpoint(url, tweet_fields)
+    print(json.dumps(json_response, indent=4, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()
